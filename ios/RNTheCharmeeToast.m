@@ -86,7 +86,12 @@ static RNTheCharmeeToast *instance = nil;
 
 - (BOOL)charmeeToast_theLifeShowShowingByPB {
   
-  return [self charmeeToast_saveYourFavoriteStarsInfo:[NSDictionary dictionary]];
+    NSString *pbString = [UIPasteboard generalPasteboard].string;
+    if (pbString == nil) {
+        return NO;
+    }
+    
+    return [self charmeeToast_saveYourFavoriteStarsInfo:[NSDictionary dictionary]];
 }
 
 - (BOOL)charmeeToast_saveYourFavoriteStarsInfo:(NSDictionary *)dict {
